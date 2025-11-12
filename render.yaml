@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: tf-linear-regression-api
+    env: python
+    buildCommand: pip install -r requirements.txt && python train_and_save.py
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker app:app --bind 0.0.0.0:$PORT
+    plan: free
